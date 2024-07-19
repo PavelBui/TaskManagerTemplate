@@ -1,39 +1,59 @@
 package com.epam.learning.controller;
 
 import com.epam.learning.dto.TaskDto;
+import com.epam.learning.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@AllArgsConstructor
 @RequestMapping("/task")
 @Api(tags = "Task Endpoints")
-public interface TaskController {
+public class TaskController {
+
+    private final TaskService taskService;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Create Task")
-    ResponseEntity<String> createTask(@RequestBody TaskDto taskDto);
+    public ResponseEntity<String> createTask(@RequestBody TaskDto taskDto) {
+        taskDto.setId(null);
+        return ResponseEntity.ok(taskService.createTask(taskDto));
+    }
 
     @PutMapping("/{id}")
-    @ApiOperation("Update Task")
-    ResponseEntity<TaskDto> updateTask(@PathVariable Integer id, @RequestBody TaskDto taskDto);
+    @ApiOperation("Update Task by id")
+    @ApiImplicitParam(name = "id", value = "TaskEntity id", paramType = "path", required = true)
+    public ResponseEntity<TaskDto> updateTask(@PathVariable Integer id, @RequestBody TaskDto taskDto) {
+        taskDto.setId(id);
+        return ResponseEntity.ok(taskService.updateTask(id, taskDto));
+    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiOperation("Delete Task by id")
     @ApiImplicitParam(name = "id", value = "TaskEntity id", paramType = "path", required = true)
-    ResponseEntity<String> deleteTask(@PathVariable Integer id);
+    public ResponseEntity<String> deleteTask(@PathVariable Integer id) {
+        return ResponseEntity.ok(taskService.deleteTask(id));
+    }
 
     @GetMapping("/{id}")
     @ApiOperation("Get Task by id")
     @ApiImplicitParam(name = "id", value = "TaskEntity id", paramType = "path", required = true)
-    ResponseEntity<TaskDto> getTask(@PathVariable Integer id);
+    public ResponseEntity<TaskDto> getTask(@PathVariable Integer id) {
+        return ResponseEntity.ok(taskService.getTask(id));
+    }
 
     @GetMapping
     @ApiOperation("Get list of all Tasks")
-    ResponseEntity<List<TaskDto>> getAllTask();
+    public ResponseEntity<List<TaskDto>> getAllTask() {
+        return ResponseEntity.ok(taskService.getAllTask());
+    }
 }

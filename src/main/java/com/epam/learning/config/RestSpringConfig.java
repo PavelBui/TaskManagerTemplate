@@ -15,7 +15,7 @@ public class RestSpringConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("Task-Manager-API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.epam.learning.controller.impl"))
+                .apis(RequestHandlerSelectors.basePackage("com.epam.learning.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
