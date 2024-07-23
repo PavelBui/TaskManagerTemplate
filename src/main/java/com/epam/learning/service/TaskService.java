@@ -15,4 +15,6 @@ public interface TaskService {
     TaskDto getTask(Integer id);
 
     List<TaskDto> getAllTask();
+
+    List<TaskDto> getAllTaskForUser(Integer id);
 }

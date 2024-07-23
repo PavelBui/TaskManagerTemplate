@@ -46,4 +46,8 @@ public class TaskEntity {
     @Column(name = "is_deleted")
     private Boolean isDeleted;
 
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserEntity user;
+
 }
