@@ -14,6 +14,4 @@ public interface TaskRepository extends CrudRepository<TaskEntity, Integer> {
 
     List<TaskEntity> findAllByIsDeletedFalse();
 
-    List<TaskEntity> findAllByUserIdAndIsDeletedFalse(Integer id);
-
 }

@@ -53,9 +53,4 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getAllTask());
     }
 
-    @GetMapping("/user/{id}")
-    @ApiOperation("Get list of all Tasks for user by user id")
-    public ResponseEntity<List<TaskDto>> getAllTaskForUser(@PathVariable Integer id) {
-        return ResponseEntity.ok(taskService.getAllTaskForUser(id));
-    }
 }

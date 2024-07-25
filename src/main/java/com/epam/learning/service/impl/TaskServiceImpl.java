@@ -60,11 +60,4 @@ public class TaskServiceImpl implements TaskService {
                 .map(taskMapper::entityToDto)
                 .toList();
     }
-
-    @Override
-    public List<TaskDto> getAllTaskForUser(Integer id) {
-        return taskRepository.findAllByUserIdAndIsDeletedFalse(id).stream()
-                .map(taskMapper::entityToDto)
-                .toList();
-    }
 }

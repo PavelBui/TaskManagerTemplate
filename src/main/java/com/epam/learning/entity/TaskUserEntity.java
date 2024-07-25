@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tasks")
-public class TaskEntity {
+@Table(name = "tasks_users")
+public class TaskUserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,4 +45,9 @@ public class TaskEntity {
 
     @Column(name = "is_deleted")
     private Boolean isDeleted;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserEntity user;
+
 }

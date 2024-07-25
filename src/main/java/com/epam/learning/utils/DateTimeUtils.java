@@ -21,6 +21,9 @@ public class DateTimeUtils {
     }
 
     public LocalDateTime convertStringToDate(String string) {
+        if (string == null || string.isEmpty()) {
+            return null;
+        }
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             return LocalDateTime.parse(string, dateTimeFormatter);
