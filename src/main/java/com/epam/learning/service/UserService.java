@@ -5,9 +5,11 @@ import com.epam.learning.entity.UserEntity;
 
 public interface UserService {
 
-//    String createUser(UserDto userDto);
+    String createUser(UserDto userDto);
 
-    UserDto getUserDto(Integer id);
+    UserDto updateUser(Integer id, UserDto userDto);
+
+    String deleteUser(Integer id);
 
     UserEntity getUserEntity(Integer id);
 
