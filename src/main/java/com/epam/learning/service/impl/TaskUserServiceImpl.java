@@ -22,16 +22,13 @@ public class TaskUserServiceImpl implements TaskUserService {
     private final UserService userService;
 
     @Override
-    public String createTask(TaskUserDto taskUserDto) {
+    public TaskUserDto createTask(TaskUserDto taskUserDto) {
         TaskUserEntity taskUserEntity = taskUserMapper.dtoToEntity(taskUserDto);
         if (taskUserDto.getUserId() != null) {
             taskUserEntity.setUser(userService.getUserEntity(taskUserDto.getUserId()));
         }
-        taskUserEntity.setCreateDate(LocalDateTime.now());
-        taskUserEntity.setDeleteDate(null);
-        taskUserEntity.setIsDeleted(false);
-        taskUserRepository.save(taskUserEntity);
-        return "Task was created successfully";
+        TaskUserEntity savedTaskUserEntity = taskUserRepository.save(taskUserEntity);
+        return taskUserMapper.entityToDto(savedTaskUserEntity);
     }
 
     @Override

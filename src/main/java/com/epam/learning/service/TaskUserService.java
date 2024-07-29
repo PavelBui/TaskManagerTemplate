@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TaskUserService {
 
-    String createTask(TaskUserDto taskUserDto);
+    TaskUserDto createTask(TaskUserDto taskUserDto);
 
     TaskUserDto updateTask(Integer id, TaskUserDto taskUserDto);
 

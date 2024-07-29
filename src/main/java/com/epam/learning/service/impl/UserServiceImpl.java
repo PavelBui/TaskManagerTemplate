@@ -19,13 +19,10 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public String createUser(UserDto userDto) {
+    public UserDto createUser(UserDto userDto) {
         UserEntity userEntity = userMapper.dtoToEntity(userDto);
-        userEntity.setCreateDate(LocalDateTime.now());
-        userEntity.setDeleteDate(null);
-        userEntity.setIsDeleted(false);
-        userRepository.save(userEntity);
-        return "User was created successfully";
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        return userMapper.entityToDto(savedUserEntity);
     }
 
     @Override

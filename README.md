@@ -14,22 +14,51 @@ REST API that allows to manage tasks.
 - **URL** - http://localhost:8081
 - **Swagger** - http://localhost:8081/swagger-ui/index.html
 
-## Endpoints
-- **Create task** - POST request http://localhost:8081/tasks
+## Task endpoints
+- **Create task** - POST request http://localhost:8081/task
     - `RequestBody: TaskDto`
-    - `ResponseBody: String` (Task was created successfully)
-- **Get task** - GET request http://localhost:8081/tasks/{id}
+    - `ResponseBody: TaskDto`
+- **Get task** - GET request http://localhost:8081/task/{id}
     - `PathVariable: task id`
     - `ResponseBody: TaskDto`
-- **Get all tasks** - GET request http://localhost:8081/tasks
+- **Get all tasks** - GET request http://localhost:8081/task
     - `ResponseBody: List of TaskDto`
-- **Update task** - PUT request http://localhost:8081/tasks/{id}
+- **Update task** - PUT request http://localhost:8081/task/{id}
     - `PathVariable: task id`
     - `RequestBody: TaskDto`
     - `ResponseBody: TaskDto`
-- **Delete task** - DELETE request http://localhost:8081/tasks/{id}
+- **Delete task** - DELETE request http://localhost:8081/task/{id}
     - `PathVariable: task id`
     - `ResponseBody: String` (Task was deleted successfully)
+
+## Task with User endpoints
+- **Create task with user** - POST request http://localhost:8081/task_user
+  - `RequestBody: TaskUserDto`
+  - `ResponseBody: TaskUserDto`
+- **Get task with user** - GET request http://localhost:8081/task_user/{id}
+  - `PathVariable: task id`
+  - `ResponseBody: TaskUserDto`
+- **Get all tasks by user id** - GET request http://localhost:8081/task_user/user/{id}
+  - `ResponseBody: List of TaskUserDto`
+- **Update task with user** - PUT request http://localhost:8081/task_user/{id}
+  - `PathVariable: task id`
+  - `RequestBody: TaskUserDto`
+  - `ResponseBody: TaskUserDto`
+- **Delete task with user** - DELETE request http://localhost:8081/task_user/{id}
+  - `PathVariable: task id`
+  - `ResponseBody: String` (Task was deleted successfully)
+
+## User endpoints
+- **Create user** - POST request http://localhost:8081/user
+  - `RequestBody: UserDto`
+  - `ResponseBody: UserDto`
+- **Update user** - PUT request http://localhost:8081/user/{id}
+  - `PathVariable: user id`
+  - `RequestBody: UserDto`
+  - `ResponseBody: UserDto`
+- **Delete user** - DELETE request http://localhost:8081/user/{id}
+  - `PathVariable: user id`
+  - `ResponseBody: String` (User was deleted successfully)
 
 ## TaskDto (example)
 ```json

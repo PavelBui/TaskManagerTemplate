@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -20,13 +21,10 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
     @Override
-    public String createTask(TaskDto taskDto) {
+    public TaskDto createTask(TaskDto taskDto) {
         TaskEntity taskEntity = taskMapper.dtoToEntity(taskDto);
-        taskEntity.setCreateDate(LocalDateTime.now());
-        taskEntity.setDeleteDate(null);
-        taskEntity.setIsDeleted(false);
-        taskRepository.save(taskEntity);
-        return "Task was created successfully";
+        TaskEntity savedTaskEntity = taskRepository.save(taskEntity);
+        return taskMapper.entityToDto(savedTaskEntity);
     }
 
     @Override

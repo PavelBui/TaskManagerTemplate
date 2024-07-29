@@ -22,7 +22,7 @@ public class TaskController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Create Task")
-    public ResponseEntity<String> createTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
         taskDto.setId(null);
         return ResponseEntity.ok(taskService.createTask(taskDto));
     }
