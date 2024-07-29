@@ -1,6 +1,5 @@
 package com.epam.learning.utils;
 
-import com.epam.learning.exeption.InvalidValidationException;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -10,44 +9,43 @@ import static org.junit.jupiter.api.Assertions.*;
 class DateTimeUtilsTest {
 
     @Test
-    void convertDateToStringWithCorrectInputTest() {
+    void convertDateToTimestampWithCorrectInputTest() {
         // given
         LocalDateTime localDateTime = LocalDateTime.of(2024, 7, 19, 11, 20);
 
         // when
-        String result = DateTimeUtils.convertDateToString(localDateTime);
+        Long result = DateTimeUtils.convertDateToTimestamp(localDateTime);
 
         // then
-        assertEquals("2024-07-19 11:20", result);
+        assertEquals(1721377200000L, result);
     }
 
     @Test
-    void convertDateToStringWithNullInputTest() {
+    void convertDateToTimestampWithNullInputTest() {
         // when
-        String result = DateTimeUtils.convertDateToString(null);
+        Long result = DateTimeUtils.convertDateToTimestamp(null);
 
         // then
         assertNull(result);
     }
 
     @Test
-    void convertStringToDateWithCorrectInputTest() {
+    void convertTimestampToDateWithCorrectInputTest() {
         // given
-        String string = "2024-07-19 11:20";
+        Long timestamp = 1721377200000L;
 
         // when
-        LocalDateTime result = DateTimeUtils.convertStringToDate(string);
+        LocalDateTime result = DateTimeUtils.convertTimestampToDate(timestamp);
 
         // then
         assertEquals("2024-07-19T11:20", result.toString());
     }
 
     @Test
-    void convertStringToDateWithIncorrectInputTest() {
-        // given
-        String string = "2024:07:19";
-
+    void convertTimestampToDateWithIncorrectInputTest() {
         // then
-        assertThrows(InvalidValidationException.class, () -> DateTimeUtils.convertStringToDate(string));
+        LocalDateTime result = DateTimeUtils.convertTimestampToDate(null);
+
+        assertNull(result);
     }
 }

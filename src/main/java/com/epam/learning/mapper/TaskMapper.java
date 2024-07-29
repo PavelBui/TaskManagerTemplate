@@ -20,8 +20,8 @@ public class TaskMapper {
         taskEntity.setContent(taskDto.getContent());
         taskEntity.setStatus(taskDto.getStatus());
         taskEntity.setPriority(taskDto.getPriority());
-        taskEntity.setDueDate(DateTimeUtils.convertStringToDate(taskDto.getDueDate()));
-        taskEntity.setCreateDate(DateTimeUtils.convertStringToDate(taskDto.getCreatedDate()));
+        taskEntity.setDueDate(DateTimeUtils.convertTimestampToDate(taskDto.getDueDate()));
+        taskEntity.setCreateDate(DateTimeUtils.convertTimestampToDate(taskDto.getCreatedDate()));
         return taskEntity;
     }
 
@@ -32,8 +32,8 @@ public class TaskMapper {
                 .content(taskEntity.getContent())
                 .status(taskEntity.getStatus())
                 .priority(taskEntity.getPriority())
-                .dueDate(DateTimeUtils.convertDateToString(taskEntity.getDueDate()))
-                .createdDate(DateTimeUtils.convertDateToString(taskEntity.getCreateDate()))
+                .dueDate(DateTimeUtils.convertDateToTimestamp(taskEntity.getDueDate()))
+                .createdDate(DateTimeUtils.convertDateToTimestamp(taskEntity.getCreateDate()))
                 .build();
     }
 }

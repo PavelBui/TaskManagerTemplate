@@ -39,8 +39,8 @@ REST API that allows to manage tasks.
     "content": "string",
     "priority": "LOW",
     "status": "DONE",
-    "createdDate": "string",
-    "dueDate": "string"
+    "createdDate": 0,
+    "dueDate": 0
 }
 ```
 
@@ -56,5 +56,5 @@ REST API that allows to manage tasks.
 - **DONE**
 
 ## DateTime format
-- **Pattern** - yyyy-MM-dd HH:mm
+- **Pattern** - timestamp as a number of milliseconds since 1970-01-01 00:00:00.0 UTC
 - **Usage** - createdDate, dueDate
