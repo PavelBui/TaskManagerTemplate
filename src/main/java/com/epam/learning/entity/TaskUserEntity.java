@@ -44,7 +44,7 @@ public class TaskUserEntity {
     private LocalDateTime deleteDate;
 
     @Column(name = "is_deleted")
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     @JoinColumn(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY)

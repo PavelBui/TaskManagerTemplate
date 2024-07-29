@@ -47,7 +47,7 @@ public class TaskUserServiceImpl implements TaskUserService {
     public String deleteTask(Integer id) {
         TaskUserEntity taskUserEntity = taskUserRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
-        taskUserEntity.setIsDeleted(true);
+        taskUserEntity.setDeleted(true);
         taskUserEntity.setDeleteDate(LocalDateTime.now());
         taskUserRepository.save(taskUserEntity);
         return "Task was deleted successfully";

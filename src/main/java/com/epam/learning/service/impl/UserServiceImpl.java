@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     public String deleteUser(Integer id) {
         UserEntity userEntity = userRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
-        userEntity.setIsDeleted(true);
+        userEntity.setDeleted(true);
         userEntity.setDeleteDate(LocalDateTime.now());
         userRepository.save(userEntity);
         return "User was deleted successfully";
